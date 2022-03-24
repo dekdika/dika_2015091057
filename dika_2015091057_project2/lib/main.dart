@@ -21,13 +21,12 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         title: Text('Belajar Routing'),
       ),
       body: Center(
-
         child: RaisedButton(
           onPressed: () {
             Route route = MaterialPageRoute(builder: (context) => HalamanProfil());
             Navigator.push(context, route);
           },
-          child: Text('Tap Untuk ke AboutPage'),
+          child: Text('Tap Untuk ke Profil'),
         ),
       ),
     );
@@ -48,7 +47,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         @override
         Widget build(BuildContext context) {
           return Scaffold(appBar: AppBar(
-            title: Text('Tentang Aplikasi'),
+            title: Text('profil'),
           ),
 
             body: Center(
@@ -58,7 +57,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 },
                 child: Text('Kembali'),
               ),
-            ),
+              ),
           );
         }
       }
