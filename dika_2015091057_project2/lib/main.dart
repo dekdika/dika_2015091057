@@ -1,77 +1,75 @@
 import 'package:flutter/material.dart';
-
-    void main(){
-
-          runApp(MaterialApp(
-              home: HalamanUtama(),
-          ),);
-    }
-class HalamanUtama extends StatefulWidget {
-  const HalamanUtama({Key? key}) : super(key: key);
-
-  @override
-  State<HalamanUtama> createState() => _HalamanUtamaState();
+void main() {
+  runApp(MaterialApp(
+    home: HomePage(),
+  ));
 }
-
-class _HalamanUtamaState extends State<HalamanUtama> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Belajar Routing'),
+        title: Text('Belajar Hero'),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Route route = MaterialPageRoute(builder: (context) => HalamanProfil());
-            Navigator.push(context, route);
+      body: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+              transitionDuration: Duration(seconds: 1),
+              pageBuilder: (_, __, ___) => AboutPage(),
+            ),
+          );
+        },
+        child: Hero(
+          tag: "ContohTag",
+          child: Icon(
+            Icons.airport_shuttle,
+            size: 100.0,
+          ),
+
+          flightShuttleBuilder:
+              (flightContext, animation, direction, fromContext, toContext)
+          {
+            if (direction == HeroFlightDirection.push) {
+              return Icon(
+                Icons.local_airport,
+                size: 100.0,
+              );
+            } else {
+              return Icon(
+                Icons.local_airport,
+                size: 60.0,
+              );
+            }
           },
-          child: Text('Tap Untuk ke Profil'),
         ),
       ),
     );
   }
 }
-
-
-
-      
-      class HalamanProfil extends StatefulWidget {
-        const HalamanProfil({Key? key}) : super(key: key);
-      
-        @override
-        State<HalamanProfil> createState() => _HalamanProfilState();
-      }
-      
-      class _HalamanProfilState extends State<HalamanProfil> {
-        @override
-        Widget build(BuildContext context) {
-          return Scaffold(appBar: AppBar(
-            title: Text('profil'),
+class AboutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Halaman Kedua'),
+      ),
+      body: Center(
+        child: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Hero(
+            tag: "ContohTag",
+            child: Icon(
+              Icons.home,
+              size: 100.0,
+            ),
           ),
+        ),
+      ),
+    );
 
-            body: Center(
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Kembali'),
-              ),
-              ),
-          );
-        }
-      }
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
+  }
+}
