@@ -5,9 +5,9 @@ class ImageData {
   String imageLarge;
 
      ImageData({this.id, this.title, this.author, this.imageLarge});
-  static List<ImageData> pixabay;
+  static List<ImageData> pixabay=<ImageData>[];
   ImageData.init() {
-    pixabay = [];
+    pixabay = <ImageData>[];
     pixabay.add(
       ImageData(
           id: 1,
